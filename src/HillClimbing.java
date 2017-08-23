@@ -11,8 +11,7 @@ public class HillClimbing {
     private Node start;
     private int nodesGenerated;
 
-    public HillClimbing(int n) {
-        N = n;
+    public HillClimbing() {
         start = new Node(N);
         initState = new Queen[N];
         initialState();
@@ -20,10 +19,11 @@ public class HillClimbing {
 
     }
 
-    public HillClimbing(Queen[] s) {
-        start = new Node(N);
+    public HillClimbing(Queen[] s, int B) {
+        N = s.length;
+        start = new Node(B);
         initState = new Queen[N];
-        for(int i = 0; i < s.length ; i++) {
+        for(int i = 0; i < N ; i++) {
             initState[i] = new Queen(s[i].getRow(), s[i].getCol());
         }
         start.setState(initState);

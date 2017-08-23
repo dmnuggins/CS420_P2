@@ -24,17 +24,17 @@ public class Queen {
 
     /**
      *
-     * @param spaces - spaces to add to the queen's position
-     * @param n - edge of the board
+     * @param spaces - spaces to add to the queen's position. moves only in downard direction
      */
-    public void shiftQueen(int spaces, int n) {
+    public void shiftQueen(int spaces, int edge) {
+
         row += spaces;
 
         // bound check
-        if(row > n && row %n != 0) {
-            row = (row % n) - 1;
-        } else if(row > n && row % n == 0) {
-            row = n;
+        if(row > edge && row %edge != 0) {
+            row = (row % edge) - 1;
+        } else if(row > edge && row % edge == 0) {
+            row = edge;
         }
     }
 

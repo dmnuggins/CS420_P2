@@ -6,7 +6,7 @@ import java.util.*;
  */
 public class Node implements Comparable<Node> {
 
-    private int N; //N queens
+    private int N = 8; //N queens
     public Queen[] state;
     private ArrayList<Node> neighbors;
     private int heuristic;
@@ -32,13 +32,13 @@ public class Node implements Comparable<Node> {
         if(initialState == null) {
             System.out.println("WARNING");
         } else {
-            System.out.println("not warning?...");
+            // empty
         }
 
         for(int i = 0 ; i < N ; i ++) {
             for(int j = 1 ; j < N ; j++) {
                 neighbors.add(count, new Node(initialState));
-                neighbors.get(count).state[i].shiftQueen(j,N);
+                neighbors.get(count).state[i].shiftQueen(j, N - 1);
                 neighbors.get(count).computeHeuristic();
 
                 count++;
@@ -57,6 +57,8 @@ public class Node implements Comparable<Node> {
         }
         return heuristic;
     }
+
+
 
     public int getHeuristic() {
         return heuristic;

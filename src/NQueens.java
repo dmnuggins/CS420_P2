@@ -13,15 +13,15 @@ public class NQueens {
 
     public static void main(String[] args) {
         NQueens board = new NQueens();
-        int numberOfRuns = 2000;
+        int numberOfRuns = 5000;
         int hillClimbNodes = 0;
         int hillClimbSuccesses = 0;
-        int n = 10;
+
 
         for(int i = 0 ; i < numberOfRuns ; i++) {
-            Queen[] initBoard = board.generateBoard(10);
+            Queen[] initBoard = board.generateBoard(8);
 
-            HillClimbing hillClimbing = new HillClimbing(initBoard);
+            HillClimbing hillClimbing = new HillClimbing(initBoard, 8);
 
             Node hillSolved = hillClimbing.hillClimbing();
 
@@ -45,10 +45,10 @@ public class NQueens {
 
     public Queen[] generateBoard(int n) {
         Queen[] start = new Queen[n];
-        Random gen = new Random();
+        Random rand = new Random();
 
         for(int i = 0 ; i < n ; i ++) {
-            start[i] = new Queen(gen.nextInt(n), i);
+            start[i] = new Queen(rand.nextInt(n), i);
         }
 
         return start;
