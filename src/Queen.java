@@ -29,7 +29,7 @@ public class Queen {
      */
     public void shiftQueen(int spaces, int n) {
         row += spaces;
-        
+
         // bound check
         if(row > n && row %n != 0) {
             row = (row % n) - 1;
