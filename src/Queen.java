@@ -1,8 +1,6 @@
 /**
- * Created by Dylan Nguyen on 8/22/2017.
- *
+ * Queen object class
  */
-
 public class Queen {
     private int row;
     private int col;
@@ -12,6 +10,12 @@ public class Queen {
         col = c;
     }
 
+    /**
+     * Checks to see if a Queen is in attack range of another queen by checking for equal row/col values and if they
+     * will meet on the diagonal
+     * @param queen
+     * @return
+     */
     public boolean inRange(Queen queen) {
         boolean inRange = false;
         if(queen.getRow() == row || queen.getCol() == col) {
@@ -38,20 +42,23 @@ public class Queen {
         }
     }
 
+    /**
+     * Returns row of Queen
+     * @return
+     */
     public int getRow() {
         return row;
     }
 
+    /**
+     * Returns column of Queen
+     * @return
+     */
     public int getCol() {
         return col;
     }
 
-    public void setRow(int r) {
-        row = r;
+    public String toString() {
+        return "[" + row + "," + col + "]";
     }
-
-    public void setCol(int c) {
-        col = c;
-    }
-
 }

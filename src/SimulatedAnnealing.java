@@ -2,7 +2,6 @@ import java.util.Random;
 
 public class SimulatedAnnealing {
     private int N = 22;
-    private int nodesGenerated;
     private Queen[] startState;
     private Node start;
 
@@ -10,7 +9,7 @@ public class SimulatedAnnealing {
      * Constructor
      */
     public SimulatedAnnealing(Queen[] state) {
-        nodesGenerated = 0;
+
         start = new Node();
         startState = new Queen[N];
 
@@ -45,11 +44,10 @@ public class SimulatedAnnealing {
         int delta;
         double determine;
 
-        Node next = new Node();
+        Node next;
 
         while(current.getHeuristic() != 0 && temp > 0) {
             next = current.getRandomNeighbor(current);
-            nodesGenerated++;
 
             if(next.getHeuristic() == 0) {
                 return next;
@@ -70,18 +68,5 @@ public class SimulatedAnnealing {
             temp = temp - val;
         }
         return current;
-    }
-
-
-    public int getNodesGenerated() {
-        return nodesGenerated;
-    }
-
-    public Node getStartNode() {
-        return start;
-    }
-
-    public void setN(int n) {
-        N = n;
     }
 }

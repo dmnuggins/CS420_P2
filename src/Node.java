@@ -1,13 +1,12 @@
 import java.util.*;
 
 /**
- * Created by Dylan Nguyen on 8/22/2017.
- *
+ * Node class
  */
 public class Node implements Comparable<Node> {
 
     private int N = 22; //N queens
-    public Queen[] state;
+    private Queen[] state;
     private ArrayList<Node> neighbors;
     private int heuristic;
 
@@ -16,12 +15,12 @@ public class Node implements Comparable<Node> {
      */
     public Node() {
         state = new Queen[N];
-        neighbors = new ArrayList<Node>(); // empty neighbor list
+        neighbors = new ArrayList<>(); // empty neighbor list
     }
 
     public Node(Node n) {
         state = new Queen[N];
-        neighbors = new ArrayList<Node>();
+        neighbors = new ArrayList<>();
         for(int i = 0 ; i < N ; i++) {
             state[i] = new Queen(n.state[i].getRow(), n.state[i].getCol());
         }
@@ -37,9 +36,7 @@ public class Node implements Comparable<Node> {
         int count = 0;
 
         if(initialState == null) {
-            System.out.println("WARNING");
-        } else {
-            // empty
+            System.out.println("WARNING, EMPTY STATE");
         }
 
         for(int i = 0 ; i < N ; i ++) {
@@ -68,10 +65,20 @@ public class Node implements Comparable<Node> {
         return heuristic;
     }
 
+    /**
+     * Returns the heuristic value
+     * @return
+     */
     public int getHeuristic() {
         return heuristic;
     }
 
+
+    /**
+     * Picks from a random neighbor generated from the passed in node
+     * @param start
+     * @return
+     */
     public Node getRandomNeighbor(Node start) {
         Random rand = new Random();
 
@@ -109,24 +116,7 @@ public class Node implements Comparable<Node> {
         }
     }
 
-    /**
-     * Returns the state of the Node
-     * @return
-     */
     public Queen[] getState() {
         return state;
     }
-
-    public String toString() {
-        return null;
-    }
-
-    /**
-     * Sets the N value to define the NxN board
-     * @param n
-     */
-    public void setN(int n) {
-        N = n;
-    }
-
 }

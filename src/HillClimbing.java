@@ -2,21 +2,17 @@ import java.util.ArrayList;
 import java.util.Random;
 
 /**
- * Created by Dylan Nguyen on 8/22/2017.
- *
+ * Steepest Hill Climbing Algorithm
  */
 public class HillClimbing {
     private int N=22;
     private Queen[] initState;
     private Node start;
-    private int nodesGenerated;
 
     public HillClimbing() {
         start = new Node();
         initState = new Queen[N];
         initialState();
-        nodesGenerated = 0;
-
     }
 
     public HillClimbing(Queen[] s) {
@@ -28,8 +24,6 @@ public class HillClimbing {
         }
         start.setState(initState);
         start.computeHeuristic();
-
-        nodesGenerated = 0;
     }
 
     public void initialState() {
@@ -46,7 +40,6 @@ public class HillClimbing {
 
         while(true) {
             ArrayList<Node> successors = curNode.generateNeighbors(curNode);
-            nodesGenerated += successors.size();
 
             Node next = null;
 
@@ -63,17 +56,4 @@ public class HillClimbing {
             curNode = next;
         }
     }
-
-    public Node getStart() {
-        return start;
-    }
-
-    public int getNodesGenerated() {
-        return nodesGenerated;
-    }
-
-    public void setN(int n) {
-        N = n;
-    }
-
 }
