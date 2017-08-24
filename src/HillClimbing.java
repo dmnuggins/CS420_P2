@@ -6,24 +6,24 @@ import java.util.Random;
  *
  */
 public class HillClimbing {
-    private int N;
+    private int N=22;
     private Queen[] initState;
     private Node start;
     private int nodesGenerated;
 
     public HillClimbing() {
-        start = new Node(N);
+        start = new Node();
         initState = new Queen[N];
         initialState();
         nodesGenerated = 0;
 
     }
 
-    public HillClimbing(Queen[] s, int B) {
+    public HillClimbing(Queen[] s) {
         N = s.length;
-        start = new Node(B);
+        start = new Node();
         initState = new Queen[N];
-        for(int i = 0; i < N ; i++) {
+        for(int i = 0; i < s.length ; i++) {
             initState[i] = new Queen(s[i].getRow(), s[i].getCol());
         }
         start.setState(initState);
@@ -70,6 +70,10 @@ public class HillClimbing {
 
     public int getNodesGenerated() {
         return nodesGenerated;
+    }
+
+    public void setN(int n) {
+        N = n;
     }
 
 }

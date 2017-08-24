@@ -53,4 +53,5 @@ public class Queen {
     public void setCol(int c) {
         col = c;
     }
+
 }
