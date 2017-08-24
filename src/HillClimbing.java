@@ -26,6 +26,9 @@ public class HillClimbing {
         start.computeHeuristic();
     }
 
+    /**
+     * Sets initial state
+     */
     public void initialState() {
         Random rand = new Random();
         for(int i = 0 ; i < N ; i++) {
@@ -35,24 +38,23 @@ public class HillClimbing {
         start.computeHeuristic();
     }
 
+    /**
+     * Hill Climbing Algorithm
+     * @return Solution Node
+     */
     public Node hillClimbing() {
         Node curNode = start;
-
         while(true) {
             ArrayList<Node> successors = curNode.generateNeighbors(curNode);
-
             Node next = null;
-
             for(int i = 0; i < successors.size() ; i++) {
                 if(successors.get(i).compareTo(curNode) < 0) {
                     next = successors.get(i);
                 }
             }
-
             if(next == null) {
                 return curNode;
             }
-
             curNode = next;
         }
     }

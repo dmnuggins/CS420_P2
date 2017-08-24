@@ -1,6 +1,3 @@
-/**
- * Main driver class
- */
 import java.text.NumberFormat;
 import java.util.Random;
 
@@ -8,18 +5,17 @@ public class NQueens {
 
     public static void main(String[] args) {
         NQueens board = new NQueens();
-        int numberOfRuns = 250;
-        int hillClimbSuccesses = 0;
-        int annealSuccesses = 0;
-        long startTime;
-        long endTime;
-        long totalTime;
+        int numberOfRuns = 250; // number of runs
+        int hillClimbSuccesses = 0; // to track hill climbing successes
+        int annealSuccesses = 0; // to track simulated annealing successes
+        long startTime, endTime, totalTime;
         int solutionCount = 0;
         NumberFormat fmt = NumberFormat.getPercentInstance();
 
         System.out.println("N-Queen Program");
         System.out.println("===============");
         System.out.println("[row,column]\n");
+        // This loop tests for 3 potential solvable configurations and prints the solution state
         for(int i = 0; i < 100 ; i++) {
             Queen[] initialState = board.createBoard();
 
@@ -45,11 +41,7 @@ public class NQueens {
                 break;
 
         }
-
-
-        /**
-         * Hill Climbing
-         */
+        // Hill Climbing
         System.out.println("\n\nHill Climbing");
         System.out.println("=============");
         startTime = System.currentTimeMillis();
@@ -72,11 +64,7 @@ public class NQueens {
         double hillClimbPercent = (double)hillClimbSuccesses/(double)numberOfRuns;
         System.out.println("Hill climbing % success: " + fmt.format(hillClimbPercent));
         System.out.println("Total time: " + totalTime + "ms");
-
-
-        /**
-         * Simulated Annealing
-         */
+        // Simulated Annealing
         System.out.println("\nSimulated Annealing");
         System.out.println("===================");
         startTime = System.currentTimeMillis();
@@ -96,8 +84,6 @@ public class NQueens {
         double annealPercent = (double)annealSuccesses/(double)numberOfRuns;
         System.out.println("Percent successes: " + fmt.format(annealPercent));
         System.out.println("Total time: " + totalTime + "s");
-
-
     }
 
     /**
@@ -107,7 +93,6 @@ public class NQueens {
     public Queen[] createBoard() {
         Queen[] start = new Queen[22];
         Random rand = new Random();
-
         for(int i = 0 ; i < 22 ; i ++) {
             start[i] = new Queen(rand.nextInt(22), i);
         }
