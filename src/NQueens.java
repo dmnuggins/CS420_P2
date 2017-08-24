@@ -19,9 +19,9 @@ public class NQueens {
         for(int i = 0; i < 100 ; i++) {
             Queen[] initialState = board.createBoard();
 
-            HillClimbing hillClimbing = new HillClimbing(initialState);
+            SHC SHC = new SHC(initialState);
             SimulatedAnnealing simulAnnealing = new SimulatedAnnealing(initialState);
-            Node hillSolved = hillClimbing.hillClimbing();
+            Node hillSolved = SHC.hillClimbing();
             Node annealSolved = simulAnnealing.simulatedAnnealing(28, 0.0001);
             if(hillSolved.getHeuristic() == 0 && annealSolved.getHeuristic() == 0) {
                 System.out.println("\n\n(Initial) Configuration " + i + ":");
@@ -48,9 +48,9 @@ public class NQueens {
         for(int i = 0 ; i < numberOfRuns ; i++) {
             Queen[] initBoard = board.createBoard();
 
-            HillClimbing hillClimbing = new HillClimbing(initBoard);
+            SHC SHC = new SHC(initBoard);
 
-            Node hillSolved = hillClimbing.hillClimbing();
+            Node hillSolved = SHC.hillClimbing();
 
 
             if(hillSolved.getHeuristic() == 0) {

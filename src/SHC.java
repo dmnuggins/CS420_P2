@@ -4,18 +4,18 @@ import java.util.Random;
 /**
  * Steepest Hill Climbing Algorithm
  */
-public class HillClimbing {
+public class SHC {
     private int N=22;
     private Queen[] initState;
     private Node start;
 
-    public HillClimbing() {
+    public SHC() {
         start = new Node();
         initState = new Queen[N];
         initialState();
     }
 
-    public HillClimbing(Queen[] s) {
+    public SHC(Queen[] s) {
         N = s.length;
         start = new Node();
         initState = new Queen[N];
